@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  myapp-mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=dock
+      - MYSQL_USER=dock
+      - MYSQL_PASSWORD=admin
+      - SQL_INTERNAL_PORT=3306
+      - SQL_CLIENT_PORT=3306
+    expose:
+      - 3306
+
+
+    volumes:
+      - "./CreateDatabase.sql:/docker-entrypoint-initdb.d/CreateDatabase.sql"
+
+  myapp-main:
+    image: elementalconcept/java8-mysql
+    restart: on-failure
+    depends_on:
+      - myapp-mysql
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=myapp-mysql
+      - DATABASE_USER=dock
+      - DATABASE_PASSWORD=admin
+      - DATABASE_NAME=dock
+      - DATABASE_PORT=3306
+    volumes:
+      - "./target/app.jar:/opt/app.jar"
+    command: java -jar /opt/app.jar

@@ -1,0 +1,10 @@
+com\dock\desafio\dto\DepositoTest.class
+com\dock\desafio\entity\PessoaTest.class
+com\dock\desafio\ws\ContasWSTest.class
+com\dock\desafio\entity\TransacaoTest.class
+com\dock\desafio\rules\PessoaRulesTest.class
+com\dock\desafio\ws\PessoasWSTest.class
+com\dock\desafio\dto\SaqueTest.class
+com\dock\desafio\entity\ContaTest.class
+com\dock\desafio\rules\TransacaoRulesTest.class
+com\dock\desafio\rules\ContaRulesTest.class
